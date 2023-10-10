@@ -1,0 +1,15 @@
+ <div class="productsList">
+    {{#each this.products as |product|}}
+        <div class="productItem">
+            <div class="card" style="width: 18rem;">
+            <img id="cardimg" src="{{product.imageUrl}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h4 class="card-title">{{product.name}}</h4>
+                <h7 class="card-price"><strong>{{product.price}}</strong></h7>
+                <p class="card-text">{{product.description}}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+            </div>
+        </div>
+    {{/each}}
+ </div>

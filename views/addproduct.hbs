@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/addproducts.css">
+    <!-- font awsome link from cdnjs -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- link for bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <nav class="navbar1">
+        <div class="navdiv">
+            
+            <div class="logodiv navItems">
+                <img class="logo" src="/images/vckartlogo.png" alt="">
+                <a class="explore" href="#">
+                    Explore
+                    <span class="plus">Plus</span>
+                    <img class="plusimg" src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/plus_aef861.png" alt="">
+                </a>
+            </div>
+
+            <div class="searchdiv navItems">
+                <input class="searchinp" type="text" placeholder="Search for your products, brands and more">
+                <button class="searchbtn"><i class="fa-solid fa-magnifying-glass searchimg"></i></button>
+            </div>
+
+            <div class="flipkart navItems">
+                <div class="dropdown">
+                    <a class="btn btn-secondary dropdown-toggle fs-5 fw-medium border-0 bg-transparent flipkartanchor" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Flipkart
+                    </a>
+                  
+                    <ul class="dropdown-menu flipkartcontent">
+                      <li><a class="dropdown-item" href="#">My Profile</a></li>
+                      {{#if isAdmin}}
+                      <li><a class="dropdown-item" href="/admin/addproduct">Add Products</a></li>
+                      <li><a class="dropdown-item" href="/admin/products">Admin Products</a></li>
+                      {{/if}}
+                      <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                      <li><a class="dropdown-item" href="/shop/products">products</a></li>
+                    </ul>
+                  </div>
+            </div>
+
+            <div class="sellerdiv navItems">
+                <a class="btn btn-secondary fs-5 fw-medium border-0 bg-transparent" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Become a Seller
+                  </a>
+            </div>
+
+            <div class="morediv navItems">
+                <div class="dropdown">
+                    <a class="btn btn-secondary dropdown-toggle fs-5 fw-medium border-0 bg-transparent moreanchor" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      More
+                    </a>
+                  
+                    <ul class="dropdown-menu morecontent">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </div>
+            </div>
+            </div>
+
+            <div class="cartdiv">
+                <a class="btn btn-secondary fs-5 fw-medium border-0 bg-transparent" href="/shop/cart">
+                  <i class="fa-solid fa-cart-shopping fa-lg cartimg">
+                    {{#if cartCount}}
+                    <div class="cartitemnumdiv">{{cartCount}}</div>
+                    {{#else}}
+                    <div class="cartitemnumdiv hidden"></div>
+                    {{/else}}
+                    {{/if}}
+                  </i>
+                    Cart
+                  </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="formdiv">
+        <form action="/admin/addproduct" class="addProduct" method="POST" enctype="multipart/form-data">
+            Upload Image: <input type="file" class="image" name="image"><br>
+
+            <label for="name" class="formLabels">Name:</label>
+            <input id="name" type="text" class="name formItems" placeholder="Enter Name" name="name"><br>
+            {{!-- <textarea type="text" class="description" name="description" placeholder="enter description"></textarea> --}}
+
+            <label for="feature1" class="formLabels">Feature 1:</label>
+            <input id="feature1" type="text" name="feature1" class="feature1 formItems" placeholder="enter feature 1"><br>
+
+            <label for="feature2" class="formLabels">Feature 2:</label>
+            <input id="feature2" type="text" name="feature2" class="feature2 formItems" placeholder="enter feature 2"><br>
+
+            <label for="feature3" class="formLabels">Feature 3:</label>
+            <input id="feature3"type="text" name="feature3" class="feature3 formItems" placeholder="enter feature 3"><br>
+
+            <label for="warranty" class="formLabels">Warranty:</label>
+            <input id="warranty" type="text" name="warranty" class="warranty formItems" placeholder="enter warranty"><br>
+
+            <label for="price" class="formLabels">Price:</label>
+            <input id="price" type="text" class="price formItems" placeholder="Enter Price" name="price"><br>
+
+            <label for="discount" class="formLabels">Discount:</label>
+            <input id="dicount" type="text" class="discount formItems" placeholder="Enter discount" name="discount"><br>
+
+            <label for="category" class="formLabels">Category:</label>
+            <input id="category" type="text" class="category formItems" placeholder="Enter type" name="category"><br>
+            <br>
+
+            <button type="submit" class="submitBtn">Add Product</button>
+        </form>
+    </div>
+
+
+
+     <footer>
+      <div class="footer">
+        <div class="box1">
+          <div class="box1items">
+            <div class="box1heading">ABOUT</div>
+            <a href="" class="box1anchors">Contact Us</a>
+            <a href="" class="box1anchors">About Us</a>
+            <a href="" class="box1anchors">Careers</a>
+            <a href="" class="box1anchors">Flipkart Stories</a>
+            <a href="" class="box1anchors">Press</a>
+            <a href="" class="box1anchors">Flipkart Wholesale</a>
+            <a href="" class="box1anchors">Corporate Information</a>
+          </div>
+
+          <div class="box1items">
+            <div class="box1heading">HELP</div>
+            <a href="" class="box1anchors">Payments</a>
+            <a href="" class="box1anchors">Shipping</a>
+            <a href="" class="box1anchors">Cancellation & Returns</a>
+            <a href="" class="box1anchors">FAQ</a>
+            <a href="" class="box1anchors">Report Infringement</a>
+          </div>
+
+          <div class="box1items">
+            <div class="box1heading">CONSUMER POLCICY</div>
+            <a href="" class="box1anchors">Cancellation & Returns</a>
+            <a href="" class="box1anchors">Terms Of Use</a>
+            <a href="" class="box1anchors">Security</a>
+            <a href="" class="box1anchors">Privacy</a>
+            <a href="" class="box1anchors">Sitemap</a>
+            <a href="" class="box1anchors">Grievance Redressal</a>
+            <a href="" class="box1anchors">EPR Compliance</a>
+          </div>
+
+          <div class="box1items">
+            <div class="box1heading">SOCIAL</div>
+            <a href="" class="box1anchors">Facebook</a>
+            <a href="" class="box1anchors">Twitter</a>
+            <a href="" class="box1anchors">Youtube</a>
+          </div>
+
+          <div class="box1items">
+            <div class="mail box1items-1">
+              <div class="box1heading">Mail Us:</div>
+              <div class="address">
+                <p>Flipkart Internet Private Limited, </p>
+                <p> Buildings Alyssa, Begonia &amp; </p>
+                <p> Clove Embassy Tech Village, </p>
+                <p> Outer Ring Road, Devarabeesanahalli Village, </p>
+                <p> Bengaluru, 560103, </p>
+                <p> Karnataka, India</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="box1items">
+            <div class="boxitems-1">
+              <div class="box1heading">Registered Office Address:</div>
+              <div class="address">
+                <p>Flipkart Internet Private Limited, </p>
+                <p> Buildings Alyssa, Begonia &amp; </p>
+                <p> Clove Embassy Tech Village, </p>
+                <p> Outer Ring Road, Devarabeesanahalli Village, </p>
+                <p> Bengaluru, 560103, </p>
+                <p> Karnataka, India</p>
+                <p> CIN : U51109KA2012PTC066107 </p>
+                <p>
+                  Telephone:
+                  <a id="telephone" href="">044-45614700</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="box2">
+          <div class="box2inner">
+            <div class="box2items">
+              <img class="box2anchorsicon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNSIgdmlld0JveD0iMCAwIDE2IDE1Ij4KICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYSIgeDE9IjAlIiB4Mj0iODYuODc2JSIgeTE9IjAlIiB5Mj0iODAuMjAyJSI+CiAgICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNGRkQ4MDAiLz4KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjRkZBRjAwIi8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDwvZGVmcz4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTS0yLTJoMjB2MjBILTJ6Ii8+CiAgICAgICAgPHBhdGggZmlsbD0idXJsKCNhKSIgZmlsbC1ydWxlPSJub256ZXJvIiBkPSJNMTUuOTMgNS42MTRoLTIuOTQ4VjQuMTRjMC0uODE4LS42NTUtMS40NzMtMS40NzMtMS40NzNIOC41NmMtLjgxNyAwLTEuNDczLjY1NS0xLjQ3MyAxLjQ3M3YxLjQ3NEg0LjE0Yy0uODE4IDAtMS40NjYuNjU2LTEuNDY2IDEuNDc0bC0uMDA3IDguMTA1YzAgLjgxOC42NTUgMS40NzQgMS40NzMgMS40NzRoMTEuNzljLjgxOCAwIDEuNDc0LS42NTYgMS40NzQtMS40NzRWNy4wODhjMC0uODE4LS42NTYtMS40NzQtMS40NzQtMS40NzR6bS00LjQyMSAwSDguNTZWNC4xNGgyLjk0OHYxLjQ3NHoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yIC0yKSIvPgogICAgPC9nPgo8L3N2Zz4K" alt="">
+              <a class="box2anchors" href="">Become a Seller</a>
+            </div>
+
+            <div class="box2items">
+              <img class="box2anchorsicon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNSIgaGVpZ2h0PSIxNSIgdmlld0JveD0iMCAwIDE1IDE1Ij4KICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYSIgeDE9IjAlIiB4Mj0iODYuODc2JSIgeTE9IjAlIiB5Mj0iODAuMjAyJSI+CiAgICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNGRkQ4MDAiLz4KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjRkZBRjAwIi8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDwvZGVmcz4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTS0zLTNoMjB2MjBILTN6Ii8+CiAgICAgICAgPHBhdGggZmlsbD0idXJsKCNhKSIgZmlsbC1ydWxlPSJub256ZXJvIiBkPSJNMTAuNDkyIDNDNi4zNTMgMyAzIDYuMzYgMyAxMC41YzAgNC4xNCAzLjM1MyA3LjUgNy40OTIgNy41QzE0LjY0IDE4IDE4IDE0LjY0IDE4IDEwLjUgMTggNi4zNiAxNC42NCAzIDEwLjQ5MiAzem0zLjE4IDEyTDEwLjUgMTMuMDg4IDcuMzI3IDE1bC44NC0zLjYwN0w1LjM3IDguOTdsMy42OS0uMzE1TDEwLjUgNS4yNWwxLjQ0IDMuMzk4IDMuNjkuMzE1LTIuNzk4IDIuNDIyLjg0IDMuNjE1eiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTMgLTMpIi8+CiAgICA8L2c+Cjwvc3ZnPgo=" alt="">
+              <a class="box2anchors" href="">Advertise</a>
+            </div>
+
+            <div class="box2items">
+              <img class="box2anchorsicon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxNyIgdmlld0JveD0iMCAwIDE4IDE3Ij4KICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYSIgeDE9IjAlIiB4Mj0iODYuODc2JSIgeTE9IjAlIiB5Mj0iODAuMjAyJSI+CiAgICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNGRkQ4MDAiLz4KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjRkZBRjAwIi8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDwvZGVmcz4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTS0xLTFoMjB2MjBILTF6Ii8+CiAgICAgICAgPHBhdGggZmlsbD0idXJsKCNhKSIgZmlsbC1ydWxlPSJub256ZXJvIiBkPSJNMTYuNjY3IDVIMTQuODVjLjA5Mi0uMjU4LjE1LS41NDIuMTUtLjgzM2EyLjQ5NyAyLjQ5NyAwIDAgMC00LjU4My0xLjM3NUwxMCAzLjM1bC0uNDE3LS41NjdBMi41MSAyLjUxIDAgMCAwIDcuNSAxLjY2N2EyLjQ5NyAyLjQ5NyAwIDAgMC0yLjUgMi41YzAgLjI5MS4wNTguNTc1LjE1LjgzM0gzLjMzM2MtLjkyNSAwLTEuNjU4Ljc0Mi0xLjY1OCAxLjY2N2wtLjAwOCA5LjE2NkExLjY2IDEuNjYgMCAwIDAgMy4zMzMgMTcuNWgxMy4zMzRhMS42NiAxLjY2IDAgMCAwIDEuNjY2LTEuNjY3VjYuNjY3QTEuNjYgMS42NiAwIDAgMCAxNi42NjcgNXptMCA2LjY2N0gzLjMzM3YtNWg0LjIzNEw1LjgzMyA5LjAyNWwxLjM1Ljk3NSAxLjk4NC0yLjdMMTAgNi4xNjdsLjgzMyAxLjEzMyAxLjk4NCAyLjcgMS4zNS0uOTc1LTEuNzM0LTIuMzU4aDQuMjM0djV6IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMSAtMSkiLz4KICAgIDwvZz4KPC9zdmc+Cg==" alt="">
+              <a class="box2anchors" href="">Gift Cards</a>
+            </div>
+
+            <div class="box2items">
+              <img class="box2anchorsicon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNSIgaGVpZ2h0PSIxNSIgdmlld0JveD0iMCAwIDE1IDE1Ij4KICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYSIgeDE9IjAlIiB4Mj0iODYuODc2JSIgeTE9IjAlIiB5Mj0iODAuMjAyJSI+CiAgICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNGRkQ4MDAiLz4KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjRkZBRjAwIi8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDwvZGVmcz4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTS0yLTNoMjB2MjBILTJ6Ii8+CiAgICAgICAgPHBhdGggZmlsbD0idXJsKCNhKSIgZmlsbC1ydWxlPSJub256ZXJvIiBkPSJNOS41IDNDNS4zNiAzIDIgNi4zNiAyIDEwLjUgMiAxNC42NCA1LjM2IDE4IDkuNSAxOGM0LjE0IDAgNy41LTMuMzYgNy41LTcuNUMxNyA2LjM2IDEzLjY0IDMgOS41IDN6bS43NSAxMi43NWgtMS41di0xLjVoMS41djEuNXptMS41NTMtNS44MTNsLS42NzYuNjljLS41NC41NDgtLjg3Ny45OTgtLjg3NyAyLjEyM2gtMS41di0uMzc1YzAtLjgyNS4zMzgtMS41NzUuODc3LTIuMTIzbC45My0uOTQ1Yy4yNzgtLjI3LjQ0My0uNjQ1LjQ0My0xLjA1NyAwLS44MjUtLjY3NS0xLjUtMS41LTEuNVM4IDcuNDI1IDggOC4yNUg2LjVhMyAzIDAgMSAxIDYgMGMwIC42Ni0uMjcgMS4yNi0uNjk3IDEuNjg4eiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTIgLTMpIi8+CiAgICA8L2c+Cjwvc3ZnPgo=" alt="">
+              <a class="box2anchors" href="">Help Center</a>
+            </div>
+
+            <div class="box2items">
+              <span>© 2007-2023 Flipkart.com</span>
+            </div>
+
+            <div class="box2items">
+              <img class="creditcards" src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/payment-method_69e7ec.svg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+
+</body>
+</html>
+
+

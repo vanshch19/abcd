@@ -1,0 +1,22 @@
+ <div class="productsList">
+    {{#each this.products as |product|}}
+        <div class="productItem">
+            <div class="card" style="width: 18rem;">
+            <img id="cardimg" src="{{product.imageUrl}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h4 class="card-title">{{product.name}}</h4>
+                <h7 class="card-text"><strong>{{product.price}}</strong></h7>
+                <p class="card-text">{{product.description}}</p>
+                <button productId ={{product._id}} class="btn btn-primary addToCart">Add To Cart</button>
+            </div>
+            </div>
+        </div>
+    {{/each}}
+ </div>
+                {{!-- <a href="/userfunctionality/addtocart?id={{product.id}}" class="btn btn-primary">Add To Cart</a> --}}
+
+
+            {{!-- <img src="{{product.imageUrl}}" alt=""> <br>
+            <div class="name">{{product.name}}</div>
+            <div class="price">{{product.price}}</div>
+            <div class="description">{{product.description}}</div> --}}

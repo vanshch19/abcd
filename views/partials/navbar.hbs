@@ -1,0 +1,26 @@
+<nav class="navbar">
+    <div class="left">
+    <a class="navItem" href="#">Shop</a>
+    <a class="navItem" href="#">Profile</a>
+    <a class="navItem" href="/shop/products">Products</a>
+    {{#if isAdmin}}
+        <a class="navItem" href="/admin/products">Admin Products</a>
+        <a class="navItem" href="/admin/add-product">Add Products</a>
+    {{/if}}
+    <a href="/logout" class="navItem">Logout</a>
+    </div>
+
+    <div class="right">
+        <a href="#" class="navItem">
+            <span class="cartName">
+                CART
+                {{#if cartCount}}
+                    <span class="cartCount">{{cartCount}}</span>
+                    {{else}}
+                    <span class="cartCount"></span>
+                {{/if}}
+            </span>
+        </a>
+        <a href="/userfunctionality/passwordchange" id="rightlink" class="navItem">Change Password</a>
+    </div>
+</nav>
